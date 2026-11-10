@@ -1,0 +1,48 @@
+Q2 - Part 5: Difference Between router.push() and router.replace()?
+
+Answer: router.push() adds a new screen to the navigation stack. When we press the Back button, we can return to the previous screen. But router.replace() replaces the current screen instead of adding a new one. When we press the Back button, we cannot return to the replaced screen.
+
+Q4 - Part 4: Preventing Double Headers?
+
+Answer: I turned off the header in app/(tabs)/_layout.js for the Settings tab using `headerShown: false`. I did this because the Settings folder has its own Stack layout (`settings/_layout.js`), which already displays a header. Disabling the outer Tabs header prevents two headers from appearing on the screen.
+
+Q5 - Bug A: Double Headers?
+
+Answer: The root Stack and Tabs layout both display their own headers, causing two headers to appear on the screen, one above the other. To fix this, we need to set `headerShown: false` for the `(tabs)` screen in the root Stack.
+
+Corrected Code:
+<Stack>
+  <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+</Stack>
+
+Q5 - Bug B: Wrong Tab Name and Missing Icon?
+
+Answer: The screen name is written as `index.js` instead of `index`, and no tab icon is provided. As a result, the tab may display the default name `index` without an icon, and the incorrect screen name may cause a configuration warning. To fix this, we use `index` as the screen name and add a `tabBarIcon`.
+
+Corrected Code:
+<Tabs>
+  <Tabs.Screen name="index" options={{
+      title: "Books",
+      tabBarIcon: ({ color, size }) => (
+        <Ionicons name="book" size={size} color={color} />
+      ),
+    }}
+  />
+</Tabs>
+
+Q5 - Bug C: Undefined Parameter?
+
+Answer: The file is named `[id].js`, but the code tries to read `bookId` instead of `id`. As a result, `bookId` is undefined and the matching book cannot be found. To fix this, we should read the parameter using the correct name `id`.
+
+Corrected Code:
+const { id } = useLocalSearchParams();
+
+Q5 - Bug D: Object Displayed as Text?
+
+Answer: The complete book object is passed as a route parameter instead of passing its individual values. As a result, the object is converted into a string and displays `[object Object]` on the screen. To fix this, we should pass the book ID as a parameter and use it to find the matching book.
+
+Corrected Code:
+router.push({
+  pathname: "/book/[id]",
+  params: { id: book.id },
+});

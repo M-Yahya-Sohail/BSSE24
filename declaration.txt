@@ -1,0 +1,15 @@
+Lab 6 Declaration 
+Name: Muhammad Yahya Sohail
+Roll number: BSEF24A020
+Date: 8-Nov-2026
+
+I declare that: 
+
+1. Every line of code in this submission was written by me. 
+2. I have not copied from another student, and I have not shared my code with anyone. 
+3. Any AI tool or website I used, I used to understand a concept, not to write my answers. I have listed every one below. 
+4. I can explain and modify any line of this submission if asked in class. I understand that a question I cannot explain receives zero, regardless of whether the code is correct. 
+
+Tools and sources used (write None if none): 
+
+- I just used Chatgpt to understand the main concepts of the lab only.
